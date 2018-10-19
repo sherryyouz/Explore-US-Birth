@@ -14,17 +14,11 @@
 
 # ### First, open the file and convert it to a list. 
 
-# In[1]:
-
 
 f = open("US_births_1994-2003_CDC_NCHS.csv", "r")
 file = f.read().split("\n")
-file[0:10]
-
 
 # ### Or create a function that can convert a dataset into a list of lists where each nested list contains integer values.
-
-# In[5]:
 
 
 def read_csv(csv):
@@ -41,12 +35,10 @@ def read_csv(csv):
     return final_list
 
 cdc_list = read_csv("US_births_1994-2003_CDC_NCHS.csv")
-cdc_list[0:10]
+
 
 
 # ### Then create a function to calculate the total number of births that occured in each month and each day of week, across all of the years in the dataset.
-
-# In[6]:
 
 
 def month_births(input_list):
@@ -61,10 +53,6 @@ def month_births(input_list):
     return births_per_month
 
 cdc_month_births = month_births(cdc_list)
-cdc_month_births
-
-
-# In[7]:
 
 
 def dow_births(input_list):
@@ -79,14 +67,12 @@ def dow_births(input_list):
     return births_per_dow
 
 cdc_day_births = dow_births(cdc_list)
-cdc_day_births
-
 
 # ### To make this process easier, create a function that can calculate the births based on the column we need.
 # 
 # The `column` can indicate year, month or day of week.
 
-# In[9]:
+
 
 
 def calc_counts(input_list, column):
@@ -101,24 +87,23 @@ def calc_counts(input_list, column):
     return calc_result
 
 cdc_year_births = calc_counts(cdc_list, 0)
-cdc_year_births
+
 
 
 # ### We can then use the same function to calculate sum of births based on columns.
 
-# In[13]:
 
 
 cdc_month_births = calc_counts(cdc_list, 1)
 cdc_dom_births = calc_counts(cdc_list, 2)
 cdc_dow_births = calc_counts(cdc_list, 3)
 
-cdc_dom_births
+
 
 
 # ## Calculate the min and max births in certain dictionary.
 
-# In[20]:
+
 
 
 def find_most(input_dict):
@@ -128,5 +113,5 @@ def find_most(input_dict):
     return most_result
 
 min_max_month_birth = find_most(cdc_month_births)  
-min_max_month_birth
+
 
